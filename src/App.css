@@ -1,0 +1,13 @@
+.scroll-container {
+  /* For Firefox */
+  scrollbar-width: none;
+  /* For Internet Explorer and Edge (older versions) */
+  -ms-overflow-style: none;
+  /* Keep functionality in modern browsers */
+  overflow-x: auto;
+}
+
+/* For WebKit browsers (Chrome, Safari, Opera) */
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}

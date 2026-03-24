@@ -52,11 +52,13 @@
   margin: 0 auto;
   min-height: 100svh;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 h1,
@@ -86,6 +88,15 @@ h2 {
 }
 p {
   margin: 0;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 code,

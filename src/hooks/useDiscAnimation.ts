@@ -1,16 +1,21 @@
 // hooks/useDiscAnimation.ts
 import { useState } from 'react';
 
+type Phase = 'idle' | 'dropping' | 'locked';
+
 export function useDiscAnimation() {
-  const [isInserting, setIsInserting] = useState(false);
+  const [phase, setPhase] = useState<Phase>('idle');
 
   const triggerInsert = () => {
-    setIsInserting(true);
+    setPhase('dropping');
 
     setTimeout(() => {
-      setIsInserting(false);
-    }, 800); // match CSS duration
+      setPhase('locked');
+    }, 700);
   };
 
-  return { isInserting, triggerInsert };
+  return {
+    phase,
+    triggerInsert,
+  };
 }

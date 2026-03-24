@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <section id='center'></section>
-      <section id='discography'>
+      <section id='discography' className=''>
         <h1 className='text-3xl font-bold underline'>Discography</h1>
         <DiscographySection albums={mockAlbums} />
       </section>

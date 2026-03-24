@@ -10,7 +10,7 @@ export default function AlbumCard({ album, onClick }: Props) {
   return (
     <div
       onClick={onClick}
-      className='w-40 h-40 rounded-xl border cursor-pointer hover:scale-105 transition'
+      className='w-40 h-40 rounded-xl border cursor-pointer hover:scale-102 transition'
     >
       <img
         src={album.cover}
