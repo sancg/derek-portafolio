@@ -8,7 +8,7 @@ type Props = {
 export default function DiscographyHeader({ viewMode, setViewMode }: Props) {
   return (
     <div className='flex justify-between items-center mb-6'>
-      <h2 className='text-3xl font-bold'>Discography</h2>
+      <h2 className='text-3xl font-bold'></h2>
 
       <div className='flex gap-2'>
         <button
