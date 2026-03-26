@@ -1,4 +1,3 @@
-// components/DiscographySection.tsx
 import '../App.css';
 import { useState } from 'react';
 import { useAudioPlayer } from '../hooks/useAudioPlayer';

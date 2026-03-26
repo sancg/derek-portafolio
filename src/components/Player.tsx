@@ -1,5 +1,5 @@
 // components/Player.tsx
-import { PlayIcon } from '@heroicons/react/20/solid';
+import { PauseIcon, PlayIcon } from '@heroicons/react/20/solid';
 import type { Track } from '../types/music';
 import { cn } from '../utils/utils';
 
@@ -30,17 +30,11 @@ export default function Player({
 }: Props) {
   const progress = duration ? (currentTime / duration) * 100 : 0;
 
-  // const discTransform = () => {
-  //   if (phase === 'idle') return '-translate-y-24 scale-75';
-  //   if (phase === 'dropping') return 'translate-y-10 scale-100';
-  //   if (phase === 'locked') return 'translate-y-14 scale-95';
-  // };
-
   return (
     <div className='relative w-56 h-56 bg-gray-100 rounded-xl shadow-2xl p-4 flex flex-col justify-between items-center overflow-hidden'>
       {/* TITLE */}
       <div className='z-10 mt-1 text-center'>
-        <p className='text-sm font-medium'>{track ? track.title : 'Select a track'}</p>
+        <p className='text-sm font-medium'>{track ? track.title : 'Select an album'}</p>
       </div>
 
       {/* Disc */}
@@ -51,12 +45,6 @@ export default function Player({
           phase === 'dropping' && 'translate-y-6 scale-100 duration-700',
           phase === 'locked' && 'translate-y-7 scale-95 duration-500',
         )}
-        // className={`
-        //   absolute top-0 z-10 self-center
-        //   w-26 h-26 rounded-full bg-gray-400
-        //   transition-all duration-500 ease-out animate-ping
-        //   ${discTransform()}
-        // `}
         style={{
           backgroundImage: cover ? `url(${cover})` : undefined,
           backgroundSize: 'cover',
@@ -70,12 +58,17 @@ export default function Player({
           ⏮
         </button>
 
-        <button onClick={onToggle} className='w-12 h-12 bg-black text-white rounded-full'>
+        <button
+          onClick={onToggle}
+          className='w-12 h-12 bg-black text-white rounded-full hover:cursor-pointer'
+        >
           {isPlaying ? (
-            '||'
+            <span>
+              <PauseIcon className='w-full p-3' />
+            </span>
           ) : (
             <span className='m-auto'>
-              <PlayIcon width={20} />
+              <PlayIcon className='w-full p-3' />
             </span>
           )}
         </button>

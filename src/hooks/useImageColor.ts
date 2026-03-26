@@ -59,6 +59,11 @@ export function useImageColor(src: string) {
       //   b = Math.min(255, b * boost);
       b = Math.min(255, b * 1.3);
 
+      // Rounded numbers
+      r = Math.floor(r);
+      g = Math.floor(g);
+      b = Math.floor(b);
+
       setColor(`rgb(${r}, ${g}, ${b})`);
     };
   }, [src]);

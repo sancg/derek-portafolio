@@ -1,54 +1,47 @@
 import '../App.css';
 import { useEffect, useState } from 'react';
-import { useThreeMusicWave } from '../hooks/useCanvasEngine';
 import { useImageColor } from '../hooks/useImageColor';
-import { rgbToRgba } from '../utils/utils';
 
 export default function Hero() {
-  const waveRef = useThreeMusicWave();
   const imageColor = useImageColor('/artist.png');
-  const gradientColor = rgbToRgba(imageColor, 0.6);
-  console.log(gradientColor);
-  return (
-    <section className='relative h-screen bg-black overflow-hidden'>
-      {/* WAVE (background) */}
-      <div ref={waveRef} className='absolute inset-0 opacity-30 z-0' />
 
+  return (
+    <section className='relative h-screen overflow-hidden'>
       {/* IMAGE */}
-      <div className='absolute inset-0 z-10'>
-        <img
-          src='/artist.png'
-          alt='artist'
-          className='w-full h-full object-scale-down object-right image-fade-left'
-        />
+      <div className='absolute z-10 rounded-3xl right-0 inset-0'>
+        <div className='ring h-full inset-4 w-full ring-amber-100'>
+          <img
+            src='/artist.png'
+            alt='artist'
+            className='absolute right-0 rounded-4xl h-10/12 top-[calc(100vh/2-20rem)] p-4 object-cover object-right image-fade'
+          />
+        </div>
       </div>
 
-      {/* DYNAMIC GRADIENT (THIS is your fix) */}
+      {/* GRADIENT */}
       <div
-        className='absolute inset-0 z-20'
+        className='absolute inset-0 z-20 scale-95 opacity-40 blur-3xl rounded-full w-full'
         style={{
           background: `linear-gradient(
           to right,
-          rgba(0,0,0,0.95) 15%,
-          ${gradientColor} 55%,
-          rgba(0,0,0,0) 100%
+          transparent 2%,
+          ${imageColor} 80%,
+          transparent 100%
         )`,
         }}
       />
+
       {/* CINEMATIC OVERLAYS */}
-      <div
-        className={`absolute inset-0 z-30 bg-[radial-gradient(circle_at_80%_40%,${gradientColor}},transparent_30%)]`}
-      />
 
-      <div
-        className={`absolute inset-0 z-20 bg-linear-to-t from-black via-transparent to-[${gradientColor}]`}
-      />
+      {/* <div
+        className={`absolute inset-0 z-20 bg-linear-to-t from-10% via-transparent to-[${imageColor}]`}
+      /> */}
 
-      <div className='absolute inset-0 z-30 bg-[radial-gradient(circle,transparent_80%,rgba(0,0,0,0.3))]' />
       {/* CONTENT */}
-      <div className='relative z-40 h-full flex items-center px-10'>
-        <div className='ml-10 max-w-xl text-white'>
-          <h1 className='text-5xl md:text-6xl font-semibold leading-tight'>
+      <div className='relative z-40 h-full flex items-center'>
+        <div className='absolute max-w-xl text-white p-4 m-4 top-[calc(100vh/2-20rem)] bg-black/30 md:bg-inherit md:ml-10 md:relative rounded-3xl'>
+          <p className='text-sm'>OFFICIAL ARTIST SITE</p>
+          <h1 className='text-5xl md:text-6xl font-semibold leading-tight mt-0'>
             Sound that moves people
           </h1>
 
@@ -77,11 +70,8 @@ function ScrollIndicator() {
 
   return (
     <div
-      className={`
-        absolute bottom-10 left-1/2 -translate-x-1/2 z-50
-        transition-all duration-500
-        ${visible ? 'opacity-100' : 'opacity-0 translate-y-4'}
-      `}
+      id='scroll-indicator'
+      className={`absolute bottom-10 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${visible ? 'opacity-100' : 'opacity-0 translate-y-4'}`}
     >
       <div className='w-px h-16 bg-white/20 relative overflow-hidden'>
         <div className='absolute top-0 w-full h-6 bg-white/60 animate-scroll' />

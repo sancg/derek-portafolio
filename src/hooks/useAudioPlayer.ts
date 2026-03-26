@@ -66,7 +66,9 @@ export function useAudioPlayer() {
   };
 
   const togglePlay = () => {
-    if (!audioRef.current) return;
+    if (!audioRef.current) {
+      return;
+    }
 
     if (isPlaying) {
       audioRef.current.pause();

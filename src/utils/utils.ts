@@ -8,6 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function rgbToRgba(rgb: string, alpha: number) {
   const values = rgb.match(/\d+/g);
+  console.log(values);
   if (!values) return rgb;
   return `rgba(${values[0]}, ${values[1]}, ${values[2]}, ${alpha})`;
 }

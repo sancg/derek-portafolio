@@ -12,28 +12,26 @@
   display: none;
 }
 
-/* Fade image from left to right */
-/* .image-fade-left {
-  -webkit-mask-image: linear-gradient(to right, transparent, black);
-  mask-image: linear-gradient(to right, transparent, black);
-} */
-.image-fade-left {
+.image-fade::before {
+  background-color: radial-gradient(red);
+}
+/* Light wrap glow from image */
+.image-light-wrap {
+  position: absolute;
+  inset: 0;
+  scale: 90%;
+  background-size: cover;
+  /* background-position: right; */
+
+  filter: blur(4rem) saturate(140%) opacity(40%);
+  /* Only show on left side */
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
-    rgba(0, 0, 0, 0.1) 15%,
-    rgba(0, 0, 0, 0.4) 30%,
-    black 55%,
-    black 100%
+    rgba(0, 0, 0, 0.6) 50%,
+    transparent 70%
   );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0, 0, 0, 0.1) 15%,
-    rgba(0, 0, 0, 0.4) 30%,
-    black 55%,
-    black 100%
-  );
+  mask-image: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.6) 50%, transparent 70%);
 }
 
 @keyframes scroll {

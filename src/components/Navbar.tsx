@@ -23,6 +23,8 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScroll]);
 
+  console.log({ navbar: { visible } });
+
   return (
     <>
       <nav
